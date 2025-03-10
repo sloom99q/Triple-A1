@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Triple A</title>
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <div class="nav-container">
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+            <img src="images/navlogo.png" alt="Company Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <a href="contact.html">
+            <button class="sd-btn" onclick="openContactPage()">Schedule Appointment</button>
+        </a>
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+
+    <div class="hamburger-menu" id="hamburger-menu">
+        <ul class="hamburger-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <a href="contact.html">
+                <li><button class="mbl-btn" onclick="openContactPage()">Schedule Appointment</button></li>
+            </a>
+        </ul>
+    </div>
+
+  </div>
+
+
+
+  <header>
+    <h1 class="title">Our Services</h1>
+    <p class="description">
+      Ready to bring your vision to life? Whether it's creating a stunning interior, upgrading your space, or securing the necessary approvals, we’re here to help. Reach out, and let’s make it happen!
+    </p>
+  </header>
+
+  <div class="background"></div>
+
+    <main class="services-main">
+        <div id="interior-fit-out" class="service-section">
+            <div class="floating-img-container">
+                <img src="images/fit-out.jpg" alt="Interior Fit-Out img" class="floating-img">
+            </div>
+            <section class="service-details">
+                <!-- Service 1: Interior Fit-Out -->
+                <div class="service">
+                    <h2>Interior Fit-Out Services</h2>
+                    <p>We specialize in high-quality interior fit-out solutions, creating functional and aesthetically pleasing spaces tailored to our clients’ needs. From retail stores to offices and residential interiors, our expert team ensures meticulous planning, execution, and on-time delivery.</p>
+                        <ul>
+                            <li>
+                                <div class="icon-box"><i class="fa-solid fa-ruler-combined"></i></div>
+                                Space planning and layout optimization
+                            </li>
+                            <li>
+                                <div class="icon-box"><i class="fa-solid fa-couch"></i></div>
+                                Custom furniture design and installation
+                            </li>
+                            <li>
+                                <div class="icon-box"><i class="fa-solid fa-paint-roller"></i></div>
+                                High-quality materials and finishes
+                            </li>
+                        </ul>
+                </div>
+            </section>
+        </div>
+
+        <div id="renovation" class="service-section">
+            <div class="floating-img-container2">
+                <img src="images/Renovation.jpg" alt="Renovation" class="service-img">
+            </div>
+            <section class="service-details">
+                <div class="service">
+                    <div class="service-img-container">
+                    </div>
+                    <h2>Renovation Services</h2>
+                    <p>Transform your property with our comprehensive renovation services. Whether it’s upgrading a single room or a complete overhaul, we bring fresh ideas and expertise to rejuvenate your space.</p>
+                    <ul>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-house"></i></div>
+                            Residential and commercial renovations
+                        </li>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-building"></i></div>
+                            Structural improvements
+                        </li>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-pen-ruler"></i></div>
+                            Design updates with a focus on functionality
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div id="mep" class="service-section">
+            <div class="floating-img-container2">
+                <img src="images/mep.jpg" alt="MEP Services" class="service-img">
+            </div>
+            <section class="service-details">
+                <div class="service">
+                    <div class="service-img-container">
+                    </div>
+                    <h2>MEP Services</h2>
+                    <p>Our Mechanical, Electrical, and Plumbing (MEP) services ensure your property operates efficiently and meets all regulatory standards. We combine advanced technology with industry best practices to deliver seamless integration of systems.</p>
+                    <ul>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-wind"></i></div>
+                            HVAC system design and installation
+                        </li>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+                            Electrical and lighting solutions
+                        </li>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-faucet"></i></div>
+                            Plumbing and water systems
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div id="authority-approvals" class="service-section">
+            <div class="floating-img-container2">
+            <img src="images/Authority.jpg" alt="Authority Approvals" class="service-img">
+            </div>
+            <section class="service-details">
+                <div class="service">
+                    <div class="service-img-container">
+                    </div>
+                    <h2>Authority Approvals</h2>
+                    <p>Navigate the complexities of regulatory compliance with our expert guidance. We streamline the process of obtaining necessary permits and approvals, ensuring your projects stay on track.</p>
+                    <ul>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-pen-to-square"></i></div>
+                            Building and construction permits
+                        </li>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-shield"></i></div>
+                            Compliance with safety and environmental standards
+                        </li>
+                        <li>
+                            <div class="icon-box"><i class="fa-solid fa-handshake-angle"></i></div>
+                            Coordination with local authorities
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+    <footer>
+      <!-- Logo Section -->
+      <div class="footer-logo">
+      <a href="index.html">
+        <img src="images/navlogo.png" alt="Company Logo">
+      </a>
+      </div>
+    
+      <!-- Contact Info Section -->
+      <div class="footer-section">
+        <h3 class="footer-title">Contact Info</h3>
+
+        <p>
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info@yourcompany.com">info@triple-a.ae</a>
+        </p>
+        <p>
+          <i class="fas fa-phone-alt"></i>
+          +971 58 572 8008
+        </p>
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          <a href="https://maps.app.goo.gl/S9jgJ212uorgyq4b9" target="_blank">
+            Dubai, The Opus by Omniyat, 804B
+          </a>
+        </p>
+      </div>
+    
+      <!-- Open Hours Section -->
+      <div class="footer-section">
+        <h3 class="footer-title">Open Hours</h3>
+        <p>Mon - Fri: 9am - 5pm</p>
+        <p>Saturday & Sunday: Closed</p>
+      </div>
+    
+      <!-- Social Media Section -->
+      <div class="footer-section">
+        <h3 class="footer-title3">Follow Us</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/triple.a.fitout/?utm_source=website&utm_medium=footer"
+            aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+  
+          <a href="https://wa.me/971585728008?text=Hello%20I%20am%20interested%20in%20your%20services!"
+            aria-label="whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+      <script src="script.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          gsap.registerPlugin(ScrollTrigger);
+
+          gsap.fromTo(".description", 
+            { opacity: 0, y: 50 }, 
+            { 
+              scrollTrigger: {
+                trigger: ".description",
+                start: "top 80%",
+                toggleActions: "play none none none"
+              },
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              delay: 0.5,
+              ease: "power2.out",
+              onComplete: function() {
+                gsap.set(".description", { clearProps: "all" });
+              }
+            }
+          );
+
+          gsap.utils.toArray(".floating-img-container").forEach(container => {
+            gsap.fromTo(container, 
+              { opacity: 0, y: 50 }, 
+              { 
+                scrollTrigger: {
+                  trigger: container,
+                  start: "top 80%",
+                  toggleActions: "play none none none"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                onComplete: function() {
+                  gsap.set(container, { clearProps: "all" });
+                }
+              }
+            );
+          });
+
+          gsap.utils.toArray(".service").forEach(service => {
+            gsap.fromTo(service, 
+              { opacity: 0, y: 50 }, 
+              { 
+                scrollTrigger: {
+                  trigger: service,
+                  start: "top 80%",
+                  toggleActions: "play none none none"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                onComplete: function() {
+                  gsap.set(service, { clearProps: "all" });
+                }
+              }
+            );
+          });
+
+          gsap.fromTo(".footer-section", 
+            { opacity: 0, y: 50 }, 
+            { 
+              scrollTrigger: {
+                trigger: "footer",
+                start: "top 80%",
+                toggleActions: "play none none none"
+              },
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              stagger: 0.2,
+              ease: "power2.out",
+              onComplete: function() {
+                gsap.set(".footer-section", { clearProps: "all" });
+              }
+            }
+          );
+
+          // Page load animation for header elements
+          gsap.fromTo("header .title", 
+            { opacity: 0, y: -50 }, 
+            { 
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power2.out"
+            }
+          );
+
+          gsap.fromTo("header .description", 
+            { opacity: 0, y: -50 }, 
+            { 
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              delay: 0.2,
+              ease: "power2.out"
+            }
+          );
+        });
+      </script>
+</body>
+</html>

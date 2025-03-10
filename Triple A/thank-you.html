@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Triple A</title>
+    <link rel="stylesheet" href="thank-you.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                <img src="images/navlogo.png" alt="Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <a href="contact.html">
+            <button class="sd-btn" onclick="openContactPage()">Schedule Appointment</button>
+            </a>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+
+        <div class="hamburger-menu" id="hamburger-menu">
+            <ul class="hamburger-links">  
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html"><button class="mbl-btn" onclick="openContactPage()">Schedule Appointment</button></a></li>
+            </ul>
+        </div>
+    </div>
+    <header>
+        <h1 class="title">Thank You!</h1>
+        <p class="description">
+            <span class="highlight"></span>Your submission has been received. <br>We will get back to you shortly.</span>
+        </p>
+        <div class="btn-container">
+            <a href="index.html">
+            <button class="qt-btn">Back to Home</button>
+            </a>
+        </div>
+    </header>
+    
+    <div class="background"></div>
+
+    <footer>
+        <!-- Logo Section -->
+        <div class="footer-logo">
+        <a href="index.html">
+          <img src="images/navlogo.png" alt="Company Logo">
+        </a>
+        </div>
+      
+        <!-- Contact Info Section -->
+        <div class="footer-section">
+          <h3 class="footer-title">Contact Info</h3>
+          <p>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:info@yourcompany.com">info@triple-a.ae</a>
+            </p>
+            <p>
+                <i class="fas fa-phone-alt"></i>
+                +971 58 572 8008
+            </p>
+            <p>
+              <i class="fas fa-map-marker-alt"></i>
+              <a href="https://maps.app.goo.gl/S9jgJ212uorgyq4b9" target="_blank">
+                Dubai, The Opus by Omniyat, 804B
+              </a>
+            </p>
+        </div>
+        
+        <!-- Open Hours Section -->
+        <div class="footer-section">
+          <h3 class="footer-title">Open Hours</h3>
+          <p>Mon - Fri: 9am - 5pm</p>
+          <p>Saturday & Sunday: Closed</p>
+        </div>
+      
+        <!-- Social Media Section -->
+        <div class="footer-section">
+          <h3 class="footer-title3">Follow Us</h3>
+          <div class="social-icons">
+              <a href="https://www.instagram.com/triple.a.fitout/?utm_source=website&utm_medium=footer"
+              aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+      
+            <a href="https://wa.me/971585728008?text=Hello%20I%20am%20interested%20in%20your%20services!"
+              aria-label="whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </footer>
+      
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Page load animation for header elements
+            gsap.fromTo("header .title", 
+              { opacity: 0, y: -50 }, 
+              { 
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+              }
+            );
+
+            gsap.fromTo("header .description", 
+              { opacity: 0, y: -50 }, 
+              { 
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.2,
+                ease: "power2.out"
+              }
+            );
+
+            gsap.fromTo("header .qt-btn", 
+              { opacity: 0 }, 
+              { 
+                opacity: 1,
+                duration: 1,
+                delay: 0.4,
+                ease: "power2.out"
+              }
+            );
+
+            // Footer animation
+            gsap.fromTo("footer .footer-logo", 
+              { opacity: 0, y: 50 }, 
+              { 
+                scrollTrigger: {
+                  trigger: "footer",
+                  start: "top 80%",
+                  toggleActions: "play none none none"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                onComplete: function() {
+                  gsap.set("footer .footer-logo", { clearProps: "all" });
+                }
+              }
+            );
+
+            gsap.fromTo("footer .footer-section", 
+              { opacity: 0, y: 50 }, 
+              { 
+                scrollTrigger: {
+                  trigger: "footer",
+                  start: "top 80%",
+                  toggleActions: "play none none none"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power2.out",
+                onComplete: function() {
+                  gsap.set("footer .footer-section", { clearProps: "all" });
+                }
+              }
+            );
+        });
+    </script>
+</body>
+</html>
