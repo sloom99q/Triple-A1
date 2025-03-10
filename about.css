@@ -1,0 +1,1119 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Satoshi', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+    padding-top: 150px; /* Add padding to create space from the top */
+    font-weight: 100;
+    background: linear-gradient(135deg, #f0f0f0 25%, #d0d0d0 100%);
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://framerusercontent.com/images/u1hEqFmJEUFPRIoLCS06cD6UE.jpg?scale-down-to=2048') no-repeat center center;
+    background-size: cover;
+    filter: grayscale(100%); /* Applies grayscale filter */
+    z-index: -1; /* Sends it behind the glass element */
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Ensure navbar stays on top and behaves well on scroll */
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure navbar stays on top */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 100px;
+  background-color: #000;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  position: relative;
+  z-index: 1000;
+}
+
+nav.scrolled {
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  backdrop-filter: blur(10px); /* Applies blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Ensures compatibility with Safari */    
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px; /* Ensure consistent font size */
+}
+
+.nav-links a:hover {
+    color: #ccc;
+}
+
+/* animation */
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Smooth transition for hamburger bars */
+.hamburger .bar {
+    transition: all 0.3s ease;
+}
+
+/* Hamburger and mobile menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+body.no-scroll {
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.hamburger-menu {
+  display: none;
+  position: fixed; /* Ensure it covers the whole screen */
+  top: 0; /* Start from the top */
+  left: 0;
+  width: 100%;
+  height: 100%; /* Cover the full height */
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure it is below the navbar */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hamburger-menu.active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hamburger-menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.hamburger-menu ul li {
+  margin: 20px 0;
+}
+
+.hamburger-menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.hamburger-menu .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Show hamburger menu */
+.nav-container.active .hamburger-menu {
+    display: flex;
+}
+
+.logo img {
+    height: 50px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logo [alt] {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sd-btn {
+    padding: 15px 25px;
+    width: fit-content;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #ccc, #fff);
+    margin-left: auto; /* Align button to the right */
+}
+
+.sd-btn:hover {
+    transition: transform 0.3s ease;
+    background: linear-gradient(90deg, #999, #cdcdcd);
+    transform: scale(1.05);
+}   
+
+.mbl-btn {
+    padding: 15px 25px;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #ccc, #fff);
+    margin-left: auto; /* Align button to the right */
+}
+
+.mbl-btn:hover {
+    transition: transform 0.3s ease;
+    background: linear-gradient(90deg, #999, #cdcdcd);
+    transform: scale(1.05);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 50px;
+}
+
+.title {
+    font-size: 55px;
+    font-weight: 600;
+    text-align: center;
+    font-family: 'Satoshi', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.hdr-list {
+  list-style: none; /* Remove default bullets */
+  display: flex;    /* Display items in a row */
+  gap: 0.5rem;      /* Add spacing between items */
+  padding: 0;
+  margin: 0;
+}
+
+.hdr-item {
+  position: relative; /* Allow positioning of the slash */
+}
+
+.hdr-item a {
+  position: relative; /* Allow positioning of the slash */
+  color: #000;
+  text-decoration: none;
+  list-style: none;
+}
+
+.hdr-item:not(:last-child)::after {
+  content: "/";           /* Add the slash after each item */
+  margin-left: 0.5rem;    /* Add space before the slash */
+  color: #333;            /* Set slash color */
+}
+
+.hero-container {
+  padding: 70px 0px;
+  max-width: 1200px;
+
+}
+
+.hero-container .hero {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.hero .hero-text {
+  max-width: 50%;
+}
+
+.hero .hero-text p {
+  color: #555;
+}
+
+.hero img {
+  width: 50%;
+}
+
+/* value section */
+.values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1000px;
+    margin-top: 100px;
+    padding: 0px 50px;
+}
+
+.values-hdr {
+    font-size: 25px;
+}
+
+.values h1 {
+    color: #111;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    max-width: 80%;
+    font-weight: 600;
+}
+
+.custom-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-list .square {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(90deg, #222, #666);
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.custom-list li {
+    font-size: 16px;
+    line-height: 1.6;
+    display: inline-flex;
+    align-items: center;
+}
+
+.lrn-btn {
+    padding: 15px 20px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.values-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.value-item {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.value-item .icon-box {
+    background: linear-gradient(135deg, #222, #555);
+    width: 50px; /* Initial size */
+    height: 50px; /* Maintain circular shape */
+    border-radius: 50%;
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    transition: all 0.3s ease; /* Optional: Add smooth resizing effect */
+}
+
+.fa-solid {
+    color: white;
+    font-size: 20px; /* Adjust size to fit inside the box */
+}
+
+.value-item .value-text {
+    max-width: 80%;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+  grid-auto-rows: auto; /* Automatically adjust row heights */
+  gap: 20px; /* Space between cards */
+  max-width: 800px; /* Adjust the container width */
+  margin-bottom: 100px;
+  padding-top: 100px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #f7f8fa, #eaeef3);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card placements */
+.card:nth-child(1) {
+  grid-column: 1; /* Start in the first column */
+}
+
+.card:nth-child(2) {
+  grid-column: 2; /* Second column */
+}
+
+.card:nth-child(3) {
+  grid-column: 3; /* Third column */
+}
+
+.card:nth-child(4) {
+  grid-column: 1 / span 3; /* Span all three columns */
+}
+
+
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 15px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+  }
+  
+  .card-container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: url('https://via.placeholder.com/1200x300') center/cover no-repeat;
+    filter: brightness(0.8);
+    opacity: 0.9;
+    border-radius: 15px 15px 0 0;
+  }
+  
+/* Centered Body */
+.centered-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 100px;
+}  
+
+/* Testimonial Container Section */
+.testimonial-container {
+  background-color: #ccc;
+  border-radius: 16px;
+  padding: 40px 40px;
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+  position: relative;
+}
+
+/* Section Title */
+.testimonial-section {
+  width: 100%;
+  height: 100%; /* Ensure the cards take the full height */
+  display: flex;
+  flex-direction: column; /* Align elements in column */
+  align-items: center;
+}
+
+.testimonial-section h2 {
+  padding: 0px 30px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 30px;
+  z-index: 1; /* Ensure title stays above the slider */
+}
+
+/* Slider Section */
+.testimonial-slider {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden; /* Hide content outside the slider */
+  margin: 0 auto;
+  padding: 20px 0; /* Padding for the slider */
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 50px;
+  background: linear-gradient(90deg, #222, #444);
+  color: white;
+  border-radius: 12px;
+  width: 700px;
+  max-width: 700px;
+  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none; /* Prevent interaction with inactive cards */
+}
+
+.testimonial-card.active {
+  opacity: 1;
+  z-index: 1;
+  position: relative;
+  pointer-events: auto; /* Allow interaction with active card */
+}
+
+/* Ensure only one card is visible at a time */
+.testimonial-card:not(.active) {
+  display: none;
+}
+  
+/* Quote Icon */
+.quote-icon {
+  font-size: 48px; /* Large size for the quote */
+  color: white;
+  font-weight: bold;
+  line-height: 0.5;
+}
+
+/* Testimonial Text */
+.testimonial-text {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 15px 0;
+  margin-bottom: 50px;
+  color: white;
+  word-wrap: break-word;
+  max-width: 400px; /* Ensure it doesn't overflow */
+}
+
+.testimonial-li {
+  margin-bottom: auto;
+  font-size: 16px;
+  line-height: 1.6;
+  display: inline-flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0px 0px;
+}
+
+.testimonial-li .square2 {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(90deg, #222, #666);
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Client Name */
+.client-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px 0;
+  color: white;
+}
+
+/* Client Location */
+.client-location {
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* Slider Controls */
+.slider-btn {
+  background: none;
+  border: none;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #111;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.slider-btn.left {
+  left: 10px;
+}
+
+.slider-btn.right {
+  right: 10px;
+}
+
+/* Dot Indicators */
+.dots {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background: linear-gradient(90deg, #222, #444);
+}
+
+.bkng-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.bkng-container .booking {
+  background-color: #ccc;
+  padding: 50px;
+  border-radius: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 1200px;
+  max-width: 1000px;
+  max-height: 600px;
+  gap: 10px;
+  z-index: 0;
+}
+
+.booking h2 {
+  margin: 0px 0px;
+  color: #fff;
+}
+
+.booking h1 {
+  color: #fff;
+  font-size: 40px;
+  max-width: 80%;
+  font-weight: 600;
+  margin: 20px;
+}
+
+.lrn-btn2 {
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #555, #888);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Container */
+footer {
+  background: linear-gradient(360deg, #111, #333);
+  color: #bbb; /* Light gray text color */
+  padding: 10px 0px; /* Spacing inside the footer */
+  display: flex; /* Flexbox layout for horizontal alignment */
+  justify-content: space-between; /* Even spacing between sections */
+  align-items: stretch; /* Ensure all sections are the same height */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  position: relative; /* Default positioning */
+  bottom: 0; /* Position at the bottom */
+  width: 100%; /* Full width of the page */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Logo Section */
+footer .footer-logo {
+  flex: 1; /* Take up 1 part of the available space */
+  display: flex; /* Center-align the logo */
+  align-items: center; /* Vertically align the logo */
+  justify-content: center; /* Center horizontally */
+  min-width: 100px; /* Minimum width for smaller screens */
+}
+
+footer .footer-logo img {
+  max-width: 250px; /* Limit logo width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Footer Sections */
+footer .footer-section {
+  flex: 1; /* Equal width for all sections */
+  min-width: 250px; /* Prevent shrinking on small screens */
+  display: flex; /* Use flex for vertical alignment */
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center-align content within each section */
+  align-items: center;
+}
+
+/* Footer Titles */
+footer .footer-title {
+  color: #fff; /* White text for titles */
+  margin-bottom: 10px; /* Spacing below the title */
+  font-size: 18px; /* Slightly larger font for emphasis */
+  font-weight: bold; /* Bold font */
+  text-align: left; /* Align titles to the left */
+}
+
+footer .footer-title3 {
+  color: #fff; /* White text for titles */
+  margin-bottom: 10px; /* Spacing below the title */
+  font-size: 18px; /* Slightly larger font for emphasis */
+  font-weight: bold; /* Bold font */
+  text-align: center; /* Align titles to the left */
+}
+
+/* Footer Links & Info */
+footer a,
+footer p {
+  color: #bbb; /* Light gray text */
+  text-decoration: none; /* Remove underline */
+  font-size: 14px; /* Standard font size */
+  margin: 5px 0; /* Space between lines */
+  display: flex; /* Align icons and text */
+  align-items: center; /* Vertically align icons with text */
+}
+
+footer a:hover {
+  color: #fff; /* Highlight links on hover */
+}
+
+/* Icons */
+footer i {
+  margin-right: 10px; /* Space between icon and text */
+  font-size: 16px; /* Adjust icon size */
+}
+
+/* Social Media Section */
+footer .social-icons {
+  display: flex; /* Horizontal layout for icons */
+  justify-content: center; /* Center-align icons */
+  align-items: center; /* Align icons vertically */
+  margin-top: 10px; /* Space between title and icons */
+}
+
+footer .social-icons a {
+  font-size: 20px; /* Larger font for social icons */
+  margin: 0 10px; /* Space between icons */
+  color: #bbb; /* Light gray icons */
+}
+
+footer .social-icons a:hover {
+  color: #fff; /* Highlight icons on hover */
+}
+
+@media (max-width: 1000px) {
+  .values {
+      padding-left: 0px;
+  }
+
+  .values-hdr {
+      padding-left: 50px;
+  }
+
+  .header-img {
+      width: 80%;
+      height: 80%;
+  }
+
+  .values-list {
+      gap: 20px;
+  }
+
+  .value-item {
+      gap: 20px;
+  }
+
+  nav {
+      padding: 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+      padding: 10px 15px;
+  }
+
+  header img {
+    display: none;
+  }
+
+  .hero .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0px 0px;
+    max-width: 100%;
+  }
+
+  .values-hdr {
+      padding: 0px 20px;
+      text-align: center;
+  }
+  
+  .title {
+      font-size: 55px; /* Reduce title font size */
+      margin-top: 0px; /* Add spacing */
+      align-items: center;
+  }
+
+  .card-container {
+    max-width: 700px;
+  }
+
+  .description {
+      font-size: 16px; /* Reduce description font size */
+      padding: 0 50px;
+  }
+
+  .text-section {
+      padding-top: 10px; /* Adjust spacing */
+  }
+
+  .custom-list .square {
+      display: none; /* Hide square bullets */
+  }
+
+  .centered-body {
+    max-width: 768px;
+  }
+
+  .qt-btn {
+      padding: 12px 20px; /* Adjust button padding */
+      font-size: 16px; /* Uniform button text size */
+  }
+
+  .values {
+      display: flex;
+      flex-direction: column; /* Stack value items vertically */
+      gap: 50px; /* Add spacing between value items */
+      padding: 0;
+      margin: 100px 50px;
+  }
+
+
+  .value-item {
+      display: flex;
+      flex-direction: column; /* Place icon and text in a row */
+      align-items: center; /* Center both icon and text */
+      gap: 10px; /* Space between icon and text */
+  }
+
+  /* Centering icon-box and reducing its size */
+  .value-item .icon-box {
+      width: 50px; /* Adjust size for better fit */
+      height: 50px;
+      margin-top: 20px;
+      margin-bottom: 0px; /* Move the icon above the text */
+  }
+
+  .fa-solid {
+      font-size: 24px; /* Adjust icon size */
+  }
+
+  /* Text alignment for the value item text */
+  .value-item .value-text {
+      text-align: center;
+  }
+
+  .values h1 {
+      color: #111;
+      margin-top: 0px;
+      margin-bottom: 20px;
+      max-width: 100%;
+      font-weight: 600;
+      padding: 0px 50px;
+      font-size: 40px;
+  }
+
+  .values-hdr {
+      text-align: center;
+      margin: auto;
+  }
+  
+  .nav-links {
+      display: none;
+  }
+  
+  .hamburger {
+      display: flex;
+  }
+
+  .nav-container.active .nav-links {
+      display: flex;
+  }
+
+  .sd-btn {
+      display: none;
+  }
+
+  .mbl-btn {
+      font-size: 20px;
+  }
+  
+  .slider-btn {
+    top: 60%;
+}
+
+.testimonial-container {
+    max-width: 700px;
+    padding: 0;
+}
+
+.testimonial-section h2 {
+    padding: 0px 100px;
+}
+
+.testimonial-section h2 br {
+    display: none;
+}
+
+.testimonial-card {
+    max-width: 600px;
+}
+
+  footer {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      text-align: center; /* Center-align text */
+    }
+  
+    footer .footer-logo {
+      order: 1; /* Ensure logo is placed last */
+      margin-top: 20px; /* Add spacing above the logo */
+    }
+  
+    footer .footer-section {
+      margin: 10px 0; /* Adjust margin for smaller screens */
+      order: 0; /* Ensure other sections are placed first */
+    }
+
+    .bkng-container {
+      max-width: 700px;
+      margin: 100px 25px;
+      padding: 0px 0px;
+    }
+
+    .booking h2 {
+      font-size: 25px;
+    }
+
+    .booking h1 {
+      font-size: 40px;
+      max-width: 100%;
+    }
+
+    .lrn-btn2 {
+      font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+      scale: 0.7;
+  }
+  
+  .hero img {
+    display: none;
+  }
+
+  header {
+    padding: 0px;
+  }
+
+  .hero .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0px 15px;
+    max-width: 100%;
+  }
+  
+  .hero .hero-text p {
+    padding: 0px 0px;
+  }
+
+  nav {
+      padding: 0px 15px;
+  }
+  .title {
+      font-size: 55px; /* Further reduce title font size */
+      padding: 0px 20px;
+      margin: 0;
+  }
+
+  .description {
+      font-size: 14px;
+      padding: 0px 40px;
+  }
+
+  .value-item {
+      flex-direction: column;
+  }
+  
+  .values-hdr {
+      text-align: center;
+  }
+  
+  .values-hdr h1 {
+      font-size: 35px;
+      padding: 0 0;
+  }
+
+  .value-item .icon-box {
+      font-size: 50px;
+  }
+
+  .fa-solid {
+      font-size: 15px; /* Further reduce icon size */
+  }
+  
+  .lrn-btn {
+      font-size: 12px;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+  }
+
+  .testimonial-card {
+    max-width: 400px;
+}
+
+.testimonial-section h2 {
+    font-size: 35px;
+}
+
+.testimonial-text {
+    font-size: 16px;
+}
+
+.dots {
+    font-size: 10px;
+    margin-bottom: 15px;
+}
+
+.slider-btn {
+    font-size: 30px;
+    color: #fff;
+    top: 65%;
+    padding: 0px 25px;
+}
+
+.testimonial-section h2 {
+    padding: 0 0;
+}
+br {
+    display: none;
+}
+
+footer {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    text-align: center; /* Center-align text */
+  }
+
+  footer .footer-logo {
+    margin-bottom: 20px; /* Add spacing below the logo */
+  }
+
+  footer .footer-section {
+    margin: 10px 0; /* Adjust margin for smaller screens */
+  }
+
+  .bkng-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 50px 0px;
+    padding: 15px;
+    width: 400px;
+  }
+
+  .bkng-container .booking {
+    padding: 20px;
+  }
+
+  .booking h2 {
+    padding-top: 15px;
+    font-size: 16px;
+}
+
+  .booking h1 {
+    font-size: 30px;
+  }
+
+  .lrn-btn2 {
+    font-size: 12px;
+  }
+}
