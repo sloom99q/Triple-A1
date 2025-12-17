@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <header>
@@ -69,34 +68,71 @@
     <section class="services">
         <h2 class="services-title">Our Services</h2>
         <div class="services-container">
-          <a href="services.html#interior-fit-out" onclick="setScrollTarget('#interior-fit-out')">
-            <div class="service-card">
-                <h2>Interior Fit-out Services</h2>
-                <img src="images/fit-out.jpg" alt="Construction Icon">
-                <p>View details</p>
-            </div>
-          </a>
-          <a href="services.html#renovation" onclick="setScrollTarget('#renovation')">
-            <div class="service-card">
+
+          <!-- Featured Interior Fit-Out -->
+          <div class="featured-wrap">
+            <a href="services.html#interior-fit-out" onclick="setScrollTarget('#interior-fit-out')" class="featured-link">
+              <div class="featured-card">
+                <img src="images/fit-out.jpg" alt="Interior Fit-Out" class="featured-img">
+                <div class="featured-content">
+                  <h2>Interior Fit-out Services</h2>
+                  <p class="featured-desc">Comprehensive interior fit-out solutions for commercial and residential projects.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Grid for the other services (3 columns on large screens) -->
+          <div class="services-grid">
+            <a href="services.html#renovation" onclick="setScrollTarget('#renovation')">
+              <div class="service-card">
+                <img src="images/Renovation.jpg" alt="Renovation" class="card-img">
                 <h2>Renovation Services</h2>
-                <img src="images/Renovation.jpg" alt="Construction Icon">
-                <p>View details</p>
-            </div>
-          </a>
-          <a href="services.html#mep" onclick="setScrollTarget('#mep')">
-            <div class="service-card">
+                <p class="card-desc">Upgrade & rejuvenate any space.</p>
+              </div>
+            </a>
+
+            <a href="services.html#mep" onclick="setScrollTarget('#mep')">
+              <div class="service-card">
+                <img src="images/Mep.jpg" alt="MEP Services" class="card-img">
                 <h2>MEP Services</h2>
-                <img src="images/Mep.jpg" alt="Construction Icon">
-                <p>View details</p>
-            </div>
-          </a>
-          <a href="services.html#authority-approvals" onclick="setScrollTarget('#authority-approvals')">
-            <div class="service-card">
+                <p class="card-desc">Mechanical, electrical & plumbing solutions.</p>
+              </div>
+            </a>
+
+            <a href="services.html#authority-approvals" onclick="setScrollTarget('#authority-approvals')">
+              <div class="service-card">
+                <img src="images/Authority.jpg" alt="Authority Approvals" class="card-img">
                 <h2>Authority Approvals</h2>
-                <img class="img" src="images/Authority.jpg" alt="Construction Icon">
-                <p>View details</p>
-            </div>
-          </a>
+                <p class="card-desc">Permits & compliance support.</p>
+              </div>
+            </a>
+
+            <a href="services.html#ceiling-works" onclick="setScrollTarget('#ceiling-works')">
+              <div class="service-card">
+                <img src="images/Family Space.JPG" alt="Ceiling Works" class="card-img">
+                <h2>Ceiling Works</h2>
+                <p class="card-desc">Suspended, gypsum and stretch ceilings.</p>
+              </div>
+            </a>
+
+            <a href="services.html#flooring-solutions" onclick="setScrollTarget('#flooring-solutions')">
+              <div class="service-card">
+                <img src="images/Flooring.jpg" alt="Flooring Solutions" class="card-img">
+                <h2>Flooring Solutions</h2>
+                <p class="card-desc">Tiles, slabs, carpets & specialist finishes.</p>
+              </div>
+            </a>
+
+            <a href="services.html#wall-finishes" onclick="setScrollTarget('#wall-finishes')">
+              <div class="service-card">
+                <img src="images/Walls.jpg" alt="Wall Finishes" class="card-img">
+                <h2>Wall Finishes &amp; Cladding</h2>
+                <p class="card-desc">Cladding, tiling & decorative finishes.</p>
+              </div>
+            </a>
+          </div>
+
         </div>
     </section>
 
@@ -229,7 +265,7 @@
       </p>
       <p>
         <i class="fas fa-phone-alt"></i>
-        +971 58 572 8008
+        +971 58 550 0359
       </p>
       <p>
         <i class="fas fa-map-marker-alt"></i>
@@ -250,12 +286,12 @@
     <div class="footer-section">
       <h3 class="footer-title3">Follow Us</h3>
       <div class="social-icons">
-          <a href="https://www.instagram.com/triple.a.fitout/?utm_source=website&utm_medium=footer"
+          <a href="https://www.instagram.com/aaa_fitout/?utm_source=website&utm_medium=footer"
           aria-label="Instagram">
           <i class="fab fa-instagram"></i>
         </a>
 
-          <a href="https://wa.me/971585728008?text=Hello%20I%20am%20interested%20in%20your%20services!"
+          <a href="https://wa.me/971585500359?text=Hello%20I%20am%20interested%20in%20your%20services!"
           aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
@@ -266,7 +302,6 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            gsap.registerPlugin(ScrollTrigger);
 
             gsap.fromTo(".description", 
               { opacity: 0, y: 50 }, 

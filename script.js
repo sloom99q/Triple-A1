@@ -107,22 +107,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Scroll to the target section if specified
-  const scrollTarget = localStorage.getItem('scrollTarget');
-  if (scrollTarget) {
-    const targetElement = document.querySelector(scrollTarget);
-    if (targetElement) {
-      const elementRect = targetElement.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      const elementHeight = elementRect.height;
-      const offset = window.scrollY + elementRect.top - (viewportHeight / 2) + (elementHeight / 2);
-      window.scrollTo({
-        top: offset,
-        behavior: 'smooth'
-      });
+  // Center-scroll to target from localStorage or hash
+  (function centerScrollOnLoad(){
+    var target = localStorage.getItem('scrollTarget') || location.hash;
+    if (target) {
+      setTimeout(function(){
+        var el = document.querySelector(target);
+        if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
+        localStorage.removeItem('scrollTarget');
+      }, 60);
     }
-    localStorage.removeItem('scrollTarget');
-  }
+  })();
 
   // Highlight active section
   const sections = document.querySelectorAll('.service-section');
@@ -140,101 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.fromTo(".description", 
-    { opacity: 0, y: 50 }, 
-    { 
-      scrollTrigger: {
-        trigger: ".description",
-        start: "top 80%",
-        toggleActions: "play none none none"
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      delay: 0.5,
-      ease: "power2.out",
-      onComplete: function() {
-        gsap.set(".description", { clearProps: "all" });
-      }
-    }
-  );
-
-  gsap.fromTo(".floating-img-container", 
-    { opacity: 0, y: 50 }, 
-    { 
-      scrollTrigger: {
-        trigger: ".floating-img-container",
-        start: "top 80%",
-        toggleActions: "play none none none"
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      delay: 0.5,
-      ease: "power2.out",
-      onComplete: function() {
-        gsap.set(".floating-img-container", { clearProps: "all" });
-      }
-    }
-  );
-
-  gsap.fromTo(".service", 
-    { opacity: 0, y: 50 }, 
-    { 
-      scrollTrigger: {
-        trigger: ".service",
-        start: "top 80%",
-        toggleActions: "play none none none"
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power2.out",
-      onComplete: function() {
-        gsap.set(".service", { clearProps: "all" });
-      }
-    }
-  );
-
-  gsap.fromTo(".footer-section", 
-    { opacity: 0, y: 50 }, 
-    { 
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top 80%",
-        toggleActions: "play none none none"
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power2.out",
-      onComplete: function() {
-        gsap.set(".footer-section", { clearProps: "all" });
-      }
-    }
-  );
-
-  gsap.fromTo(".bkng-container", 
-    { opacity: 0, y: 50 }, 
-    { 
-      scrollTrigger: {
-        trigger: ".bkng-container",
-        start: "top 80%",
-        toggleActions: "play none none none"
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out",
-      onComplete: function() {
-        gsap.set(".bkng-container", { clearProps: "all" });
-      }
-    }
-  );
+  // Removed ScrollTrigger-based animations. Keep simple entrance animations
+  if (window.gsap) {
+    gsap.fromTo(".description", {opacity:0,y:50}, {opacity:1,y:0,duration:1,delay:0.5,ease:"power2.out"});
+    gsap.fromTo(".floating-img-container", {opacity:0,y:50}, {opacity:1,y:0,duration:1,delay:0.6,ease:"power2.out"});
+    gsap.fromTo(".service", {opacity:0,y:30}, {opacity:1,y:0,duration:1,stagger:0.15,ease:"power2.out"});
+    gsap.fromTo(".footer-section", {opacity:0,y:20}, {opacity:1,y:0,duration:0.9,stagger:0.15,ease:"power2.out"});
+    gsap.fromTo(".bkng-container", {opacity:0,y:20}, {opacity:1,y:0,duration:0.9,ease:"power2.out"});
+  }
 
   // Page load animation for header elements
   gsap.fromTo("header .title", 

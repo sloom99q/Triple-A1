@@ -245,7 +245,7 @@ body.no-scroll {
 .description {
     font-size: 18px;
     line-height: 1.8;
-    color: #444;
+    color: #6b6b6b; /* neutral grey */
     text-align: center;
     margin: 0px 0px 0px;
     max-width: 650px;
@@ -316,88 +316,123 @@ body.no-scroll {
     font-weight: 600;
 }
 
+/* Featured card + responsive 3-column grid */
 .services-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    padding: 0 50px;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 0 30px;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.services-container a {
-    text-decoration: none;
-}
-
-.service-card {
+.featured-wrap { width: 100%; display:flex; justify-content:center; }
+.featured-card {
+    position: relative; /* enable background image positioning */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    position: relative;
+    gap: 24px;
+    padding: 28px;
+    border-radius: 12px;
     width: 100%;
-    height: 100%;        /* Adjust as needed */
+    max-width: 1200px; /* match services width */
+    min-height: 300px; /* slightly taller to match service cards */
+    background: linear-gradient(135deg, #0f1720, #2b2f36);
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(12,12,12,0.18);
     overflow: hidden;
-    border-radius: 15px;
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    text-align: center;
-    cursor: pointer;
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #000, #111);
-}
-
-.services-container .service-card:nth-child(1) {
-    background: linear-gradient(135deg, #000, #555);
-}
-
-.services-container .service-card:nth-child(2) {
-    background: linear-gradient(-135deg, #000, #555);
-}
-
-.services-container .service-card:nth-child(3) {
-    background: linear-gradient(45deg, #000, #555);
-}
-
-.services-container .service-card:nth-child(4) {
-    background: linear-gradient(-45deg, #000, #555);
-}
-
-
-.service-card h2 {
+/* Make the image act as a subtle background with a gentle blur (less dark) */
+.featured-img {
     position: absolute;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #fff;          /* Make the header text white */
-    text-align: center;   /* Ensure the text inside h2 is centered */
-    width: 100%;
-    z-index: 1;   
-}
-
-.service-card p {
-    position: absolute;   /* Position relative to .service-card */
-    font-size: 16px;
-    line-height: 1.5;
-    color: #ddd;
-    top: calc(50% + 10px); /* Position it below the h2 (adjust 30px as needed) */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1; 
-}
-
-.service-card img {
-    opacity: 0.1;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scaleX(-1);
+    border-radius: 12px;
+    opacity: 0.20; /* slightly more visible */
+    filter: blur(0.4px);
+    z-index: 0;
 }
+.featured-content { flex: 1; text-align: center; position: relative; z-index: 2; }
+.featured-content h2 { margin: 0 0 8px 0; font-size: 1.5rem; }
+.featured-desc { color: #bfbfbf; margin: 0; }
+
+.services-grid {
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+}
+
+@media (max-width: 1100px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+    .services-grid { grid-template-columns: 1fr; }
+}
+
+.service-card {
+    padding: 36px 20px;
+    min-height: 220px;
+    border-radius: 15px;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(10,10,10,0.85), rgba(34,34,34,0.75)); /* slightly lighter */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Remove underline for service links and keep text color */
+.services-container a { text-decoration: none; color: inherit; }
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* Apply gradients to anchors so nth-child targets the correct element */
+.services-container > a:nth-child(1) .service-card { background: linear-gradient(135deg, #000, #555); }
+.services-container > a:nth-child(2) .service-card { background: linear-gradient(-135deg, #111, #666); }
+.services-container > a:nth-child(3) .service-card { background: linear-gradient(45deg, #222, #666); }
+.services-container > a:nth-child(4) .service-card { background: linear-gradient(-45deg, #222, #444); }
+.services-container > a:nth-child(5) .service-card { background: linear-gradient(135deg, #333, #777); }
+.services-container > a:nth-child(6) .service-card { background: linear-gradient(-135deg, #111, #333); }
+.services-container > a:nth-child(7) .service-card { background: linear-gradient(45deg, #222, #444); }
+
+.service-card h2 { font-size: 1.4rem; font-weight: 600; color: #fff; margin: 0; z-index: 2; }
+.service-card p { font-size: 0.95rem; color: #bfbfbf; margin-top: 10px; z-index: 2; }
+
+/* Lower overlay opacity and blur for better readability (even lighter) */
+.service-card img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.20; /* further increased so images show through more */
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    filter: blur(0.4px); /* slightly reduced blur */
+}
+
+
+@media (max-width: 900px) {
+    .featured-card { flex-direction: column; padding: 18px; min-height: 260px; }
+    .featured-img { width: 100%; height: 180px; }
+    .service-card h2 { font-size: 1.1rem; }
+    .service-card p { font-size: 0.9rem; }
+}
+
 
 /* value section */
 .values {
